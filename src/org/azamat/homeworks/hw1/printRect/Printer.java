@@ -1,7 +1,7 @@
 package org.azamat.homeworks.hw1.printRect;
 
 public class Printer {
-    void rect(int size) {
+    public void rect(int size) {
         for (int row = 1; row <= size; ++row) {
             for (int col = 1; col <= size; ++col) {
                 System.out.print("#");
@@ -9,7 +9,7 @@ public class Printer {
             System.out.println("");
         }
     }
-    void reverseTriangle(int size) {
+    public void reverseTriangle(int size) {
         for (int row = 1; row <= size; ++row) {
             for (int col = 1; col <= size-row+2; ++col) {
                 if (col != size-row+2) System.out.print("#");
@@ -17,7 +17,7 @@ public class Printer {
             System.out.println("");
         }
     }
-    void printZ(int size) {
+    public void printZ(int size) {
         for (int row = 1; row <= size; ++row) {
             for (int col = 1; col <= size; ++col) {
                 if (row!=1 && row!=size) {
@@ -27,7 +27,7 @@ public class Printer {
             System.out.println("");
         }
     }
-    void printXInRect(int size) {
+    public void printEightRect(int size) {
         for (int row = 1; row <= size; ++row) {
             for (int col = 1; col <= size; ++col) {
                 if (row!=1 && row!=size) {

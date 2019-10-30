@@ -12,6 +12,7 @@ public class Main {
 
         long startTime1 = System.nanoTime();
         a.selectionSort();
+
         long estimatedTime1 = System.nanoTime() - startTime1;
         System.out.println("selectionSort " + estimatedTime1+"ns");
 

@@ -10,7 +10,7 @@ public class ArraySortClass {
             arr[i] =(int)(-10+Math.random()*(10+10)) ;
         }
     }
-    void bubbleSort() {
+    public void bubbleSort() {
         int t;
         boolean isSort = false;
         while (!isSort) {
@@ -29,7 +29,7 @@ public class ArraySortClass {
 //            System.out.println(z);
 //        }
     }
-    void selectionSort() {
+    public void selectionSort() {
         for (int i = 0; i < arr.length - 1; ++i) {
             int z = i;
             for (int j = z+1; j < arr.length; ++j) {
@@ -46,7 +46,7 @@ public class ArraySortClass {
 //            System.out.println(z);
 //        }
     }
-    void arraySort() {
+    public void arraySort() {
         Arrays.sort(arr);
 //        System.out.println(Arrays.toString(arr));
     }

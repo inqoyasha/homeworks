@@ -3,24 +3,23 @@ package org.azamat.homeworks.hw1.oneDArrays;
 public class OneDimArray {
     private int[] arr;
 
-    public int[] createArr(int size) {
-        return this.arr = new int[size];
+    public OneDimArray(int size) {
+        this.arr = new int[size];
+        for (int i=0; i<arr.length;++i) {
+            arr[i] = 0;
+        }
     }
-
-    public int[] createArr(int size, int min, int max) {
+    public OneDimArray(int size, int min, int max) {
         this.arr = new int[size];
         for (int i = 0; i <= arr.length - 1; ++i) {
             arr[i] = min + (int) (Math.random() * ((max - min) + 1));
         }
-        return arr;
     }
 
-    public int[] createOddArr(int size) {
-        this.arr = new int[size];
+    public void fillOddNums() {
         for (int i = 0; i <= arr.length - 1; ++i) {
             arr[i] = 2 * i + 1;
         }
-        return arr;
     }
 
     public void printDesc() {
@@ -87,7 +86,7 @@ public class OneDimArray {
         return avgSum = sum / arr.length;
     }
 
-    static public void compareAvg(OneDimArray arr1, OneDimArray arr2) {
+    public static void compareAvg(OneDimArray arr1, OneDimArray arr2) {
         if (arr1.avgEl() == arr2.avgEl()) System.out.println("avg(arr1[]) = avg(arr2[]) and equals: " + arr1.avgEl());
         else if (arr1.avgEl() > arr2.avgEl())
             System.out.println("avg(arr1[]) > avg(arr2[]) and equals: " + arr1.avgEl());
