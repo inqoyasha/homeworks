@@ -10,8 +10,8 @@ public class Book {
 
     public Book(String name, Author[] authors, double price) {
         this.name = name;
-        this.authors = authors;
         this. price = price;
+        this.authors = authors;
     }
     public Book(String name, Author[] authors, double price, int qty) {
         this.name = name;
@@ -24,7 +24,7 @@ public class Book {
         return name;
     }
     public Author[] getAuthors() {
-        return authors;
+        return Arrays.copyOf(authors,authors.length);
     }
     public double getPrice() {
         return price;
