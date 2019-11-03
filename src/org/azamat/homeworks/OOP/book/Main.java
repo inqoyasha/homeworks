@@ -2,15 +2,19 @@ package org.azamat.homeworks.OOP.book;
 
 public class Main {
     public static void main(String[] args) {
-        Author erik = new Author("Erik Gover", "erik.gover@mail.com", 'm');
-        Author lisa = new Author("Lisa Ester", "lisa_ester1@mail.com", 'f');
-        Author[] authors = new Author[]{new Author("Erik Gover", "erik.gover@mail.com", 'm'),new Author("Lisa Ester", "lisa_ester1@mail.com", 'f')};
-        for (int i=0; i< authors.length;++i) {
-            System.out.println(authors[i]);
-        }
-        Book book = new Book("Alisa in wonderland", authors, 2.33);
+        Author jonathonManning = new Author("Jonathon Manning", "jonathon.manning@mail.com", 'm');
+        Author parisAddison = new Author("Paris Buttfield-Addison", "addison@mail.com", 'm');
+        Author timNugent = new Author("Tim Nugent", "tim_1@mail.com", 'm');
+        Author[] authorsLearningSwift = new Author[]{jonathonManning, parisAddison, timNugent};
+        Book learningSwift = new Book("Learning Swift: Building Apps for macOS, iOS, and Beyond", authorsLearningSwift, 29.99);
 
-        System.out.println(book.toString());
+        Author craigGrummitt = new Author("Craig Grummitt", "craig_1337@mail.com", 'm');
+        Author[] authorsIOSDevelopmentWithSwift = new Author[]{craigGrummitt};
+        Book iOSDevelopment = new Book("iOS Development With Swift",authorsIOSDevelopmentWithSwift, 24.99);
 
+        System.out.println(learningSwift.toString());
+        System.out.println(learningSwift.getAuthorNames());
+        System.out.println(iOSDevelopment.toString());
+        System.out.println(iOSDevelopment.getAuthorNames());
     }
 }
