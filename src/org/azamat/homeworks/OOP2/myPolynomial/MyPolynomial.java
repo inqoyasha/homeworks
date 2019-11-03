@@ -51,11 +51,11 @@ public class MyPolynomial {
         int maxDegree = Math.max(degreeThis,degreeRight);
         double[] newCoeffs = new double[maxDegree+1];
         for (int i = 0; i <= maxDegree; ++i) {
-            if (i <= minDegree) newCoeffs[i] = coeffs[i] + right.coeffs[i]; //идем до минимальной степени полинома, в массив с новыми коэффициентами закидываем сумму 2х полиномов
-                else if (degreeThis > degreeRight) newCoeffs[i] = this.coeffs[i]; //когда дошли до степени большей минимальной, проверяем какой из массивов длиннее
-                    else newCoeffs[i] = right.coeffs[i];                          //и из наибольшего копируем остальные коэффициенты в результирующий массив
+            if (i <= minDegree) newCoeffs[i] = coeffs[i] + right.coeffs[i]; // iterate to minDegree, in new array add sum coeffs[] this and coeffs[] right
+                else if (degreeThis > degreeRight) newCoeffs[i] = this.coeffs[i]; // when we iterate to degree more than minDegree, we should to verify which arr is longer
+                    else newCoeffs[i] = right.coeffs[i];                          //then from longer array we copy other elements into new array
         }
-        MyPolynomial newPolynom = new MyPolynomial(newCoeffs); //заполняем наш результирующий полином коэфф
+        MyPolynomial newPolynom = new MyPolynomial(newCoeffs); // fill array sum coeffs[] this and coeffs[] right
 
         return newPolynom;
     }
@@ -66,10 +66,10 @@ public class MyPolynomial {
         double[] newCoeffs = new double[thisCoeffsSize+rightCoeffsSize-1];
         for (int i = 0; i < thisCoeffsSize; ++i) {
             for (int j = 0; j < rightCoeffsSize; ++j) {
-                newCoeffs[i+j] += this.coeffs[i]*right.coeffs[j]; // заполняем массив перемножая коэффы 1 и 2
-            }
-        }
-        MyPolynomial newPolynom = new MyPolynomial(newCoeffs);
+                newCoeffs[i+j] += this.coeffs[i]*right.coeffs[j]; // fill array mul coeffs[] this and coeffs[] right, like  sum of matrix lines [x,x,x,.,.,.]
+            }                                                                                                                                 //[.,x,x,x,.,.]
+        }                                                                                                                                     //[.,.,x,x,x,.]
+        MyPolynomial newPolynom = new MyPolynomial(newCoeffs);                                                                                //[.,.,.,x,x,x]
 
         return newPolynom;
     }
