@@ -39,7 +39,7 @@ public class MyTriangle {
         if (a != b && b != c && c != a) num = 3;
         switch(num) {
             case 1:
-                type = "equilateral";
+                type = "equilateral"; // can't three points with integer coordinates be vertices of an equilateral triangle
                 break;
             case 2:
                 type = "isosceles";

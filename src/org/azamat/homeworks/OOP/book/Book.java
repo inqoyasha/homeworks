@@ -53,6 +53,6 @@ public class Book {
             if (i != authors.length-1) authorsNames += authors[i].getName()+',';
                 else authorsNames += authors[i].getName();
         }
-        return authorsNames; //need to fix
+        return authorsNames;
     }
 }
