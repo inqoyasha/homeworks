@@ -7,4 +7,17 @@ public class LoopFactorial {
             fact*=i;
         }
     }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null) return false;
+        if (getClass() != o.getClass()) return false;
+        return super.equals(o);
+    }
 }

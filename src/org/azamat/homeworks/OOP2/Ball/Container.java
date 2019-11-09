@@ -1,5 +1,7 @@
 package org.azamat.homeworks.OOP2.Ball;
 
+import java.util.Objects;
+
 public class Container {
     private int x1;
     private int y1;
@@ -40,4 +42,18 @@ public class Container {
         return false;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Container container = (Container) o;
+        return x1 == container.x1 &&
+                y1 == container.y1 &&
+                x2 == container.x2 &&
+                y2 == container.y2;
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(x1, y1, x2, y2);
+    }
 }

@@ -1,5 +1,7 @@
 package org.azamat.homeworks.OOP.employee;
 
+import java.util.Objects;
+
 public class Employee {
     private int id;
     private String firstName;
@@ -39,7 +41,6 @@ public class Employee {
         salary += raise;
         return salary;
     }
-
     @Override
     public String toString() {
         return "Employee[" +
@@ -48,6 +49,22 @@ public class Employee {
                 ", lastName='" + lastName + '\'' +
                 ", salary=" + salary +
                 ']';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null) return false;
+        if (getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return id == employee.id &&
+                salary == employee.salary &&
+                Objects.equals(firstName, employee.firstName) &&
+                Objects.equals(lastName, employee.lastName);
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, salary);
     }
 }
 

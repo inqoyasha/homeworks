@@ -3,6 +3,8 @@ package org.azamat.homeworks.OOP.rectangle;
 import org.azamat.homeworks.OOP.circle.Circle;
 import org.w3c.dom.css.Rect;
 
+import java.util.Objects;
+
 public class Rectangle {
     private float length = 1.0f;
     private float width = 1.0f;
@@ -46,5 +48,18 @@ public class Rectangle {
         return 2*(length+width);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null) return false;
+        if (getClass() != o.getClass()) return false;
+        Rectangle rectangle = (Rectangle) o;
+        return Float.compare(rectangle.length, length) == 0 &&
+                Float.compare(rectangle.width, width) == 0;
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(length, width);
+    }
 }

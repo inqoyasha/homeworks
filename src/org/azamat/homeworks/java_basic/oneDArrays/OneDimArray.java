@@ -1,5 +1,7 @@
 package org.azamat.homeworks.java_basic.oneDArrays;
 
+import java.util.Arrays;
+
 public class OneDimArray {
     private int[] arr;
 
@@ -122,5 +124,19 @@ public class OneDimArray {
 
         if (k>=1) System.out.println("meets the same number of times " + repeat + " " + var);
             else System.out.println("occurs most often "+var);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null) return false;
+        if (getClass() != o.getClass()) return false;
+        OneDimArray that = (OneDimArray) o;
+        return Arrays.equals(arr, that.arr);
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(arr);
     }
 }

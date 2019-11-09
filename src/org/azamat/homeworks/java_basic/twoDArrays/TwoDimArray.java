@@ -1,5 +1,7 @@
 package org.azamat.homeworks.java_basic.twoDArrays;
 
+import java.util.Arrays;
+
 public class TwoDimArray {
     private int[][] arr;
 
@@ -132,4 +134,16 @@ public class TwoDimArray {
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null) return false;
+        if (getClass() != o.getClass()) return false;
+        TwoDimArray that = (TwoDimArray) o;
+        return Arrays.equals(arr, that.arr);
+    }
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(arr);
+    }
 }

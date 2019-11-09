@@ -51,4 +51,16 @@ public class ArraySortClass {
 //        System.out.println(Arrays.toString(arr));
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null) return false;
+        if (getClass() != o.getClass()) return false;
+        ArraySortClass that = (ArraySortClass) o;
+        return Arrays.equals(arr, that.arr);
+    }
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(arr);
+    }
 }
