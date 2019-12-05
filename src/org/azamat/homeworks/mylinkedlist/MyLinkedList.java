@@ -4,6 +4,7 @@ import java.util.Iterator;
 
 public class MyLinkedList<E> implements ILinkedList<E>{
     private Node<E> head;
+    private Node<E> tail;
     private int size;
 
     public MyLinkedList() {
@@ -13,15 +14,20 @@ public class MyLinkedList<E> implements ILinkedList<E>{
 
     @Override
     public void add(E element) {
-        head = new Node<E>(element, head);
+        Node<E> newNode = new Node<E>(element, null);
+        if (head.element == null)
+            head = newNode;
+        else
+            tail.nextNode = newNode;
+        tail = newNode;
         size++;
     }
 
     @Override
     public void add(int index, E element) {
         Node<E> next = getNodeByIndex(index);
-        Node<E> newNode = new Node<E>(element, next.nextNode);
-        head.nextNode = newNode;
+        //Node<E> newNode = new Node<E>(element);
+        //head.nextNode = newNode;
         size++;
     }
 
@@ -84,6 +90,15 @@ public class MyLinkedList<E> implements ILinkedList<E>{
                 return get(count++);
             }
         };
+    }
+
+    @Override
+    public String toString() {
+        return "MyLinkedList{" +
+                "head=" + head +
+                ", tail=" + tail +
+                ", size=" + size +
+                '}';
     }
 
     private Node<E> getNodeByIndex(int index){
