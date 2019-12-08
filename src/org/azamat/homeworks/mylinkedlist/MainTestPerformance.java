@@ -11,61 +11,49 @@ public class MainTestPerformance {
 //----------------Perfomance test with Integer---------------------
 
 //    List<Integer> listJava = new LinkedList<>();
+//    for (int i = 0; i < 100000; ++i) {
+//        listJava.add((int)(-100+Math.random()*(10+100)));
+//    }
 //    ILinkedList<Integer> listMy = new MyLinkedList<>();
+//    for (int i = 0; i < 100000; ++i) {
+//        listMy.add((int)(-100+Math.random()*(10+100)));
+//    }
 
 //-------------Appends element to the end of list--------------------
 
 //    long startTimeAddJava = System.nanoTime();
-//    for (int i = 0; i < 100000; ++i) {
-//        listJava.add((int)(-100+Math.random()*(10+100)));
-//    }
+//    listJava.add((int)(-100+Math.random()*(10+100)));
 //    long estimatedTimeAddJava = System.nanoTime() - startTimeAddJava;
 //    System.out.println(estimatedTimeAddJava + " JavaList add time");
 //
 //    long startTimeAddMy = System.nanoTime();
-//    for (int i = 0; i < 100000; ++i) {
-//        listMy.add((int)(-100+Math.random()*(10+100)));
-//    }
+//    listMy.add((int)(-100+Math.random()*(10+100)));
 //    long estimatedTimeAddMy = System.nanoTime() - startTimeAddMy;
 //    System.out.println(estimatedTimeAddMy + " MyList add time");
 
 //-------------------------------------------------------------------
 //----------------------Inserts element in the list------------------
 
-//    for (int i = 0; i < 50000; ++i) {
-//        listJava.add((int)(-100+Math.random()*(10+100)));
-//    }
+//    int ind = (int)(Math.random()*(100000+1));
+//    int num = (int)(-100+Math.random()*(10+100));
 //    long startTimeAddJava = System.nanoTime();
-//        for (int i = 0; i < 50000; ++i) {
-//            listJava.add((int)(Math.random()*(i+1)),(int)(-100+Math.random()*(10+100)));
-//        }
+//    listJava.add(ind,num);
 //    long estimatedTimeAddJava = System.nanoTime() - startTimeAddJava;
 //    System.out.println(estimatedTimeAddJava + " JavaList insert time");
 //
-//    for (int i = 0; i < 50000; ++i) {
-//        listMy.add((int)(-100+Math.random()*(10+100)));
-//    }
 //    long startTimeAddMy = System.nanoTime();
-//        for (int i = 0; i < 50000; ++i) {
-//            listMy.add((int)(Math.random()*(i+1)),(int)(-100+Math.random()*(10+100)));
-//        }
+//    listMy.add(ind,num);
 //    long estimatedTimeAddMy = System.nanoTime() - startTimeAddMy;
 //    System.out.println(estimatedTimeAddMy + " MyList insert time");
 
 //-------------------------------------------------------------------
 //---------------------Search element in the list--------------------
 
-//    for (int i = 0; i < 100000; ++i) {
-//        listJava.add((int)(-100+Math.random()*(10+100)));
-//    }
 //    long startTimeSearchJava = System.nanoTime();
 //    listJava.get(50000);
 //    long estimatedTimeSearchJava = System.nanoTime() - startTimeSearchJava;
 //    System.out.println(estimatedTimeSearchJava + " JavaList search time");
 //
-//    for (int i = 0; i < 100000; ++i) {
-//        listMy.add((int)(-100+Math.random()*(10+100)));
-//    }
 //    long startTimeSearchMy = System.nanoTime();
 //    listMy.get(50000);
 //    long estimatedTimeSearchMy = System.nanoTime() - startTimeSearchMy;
@@ -74,17 +62,11 @@ public class MainTestPerformance {
 //-------------------------------------------------------------------
 //---------------------Remove element from list----------------------
 
-//    for (int i = 0; i < 100000; ++i) {
-//        listJava.add((int)(-100+Math.random()*(10+100)));
-//    }
 //    long startTimeRemoveJava = System.nanoTime();
 //    listJava.remove(50000);
 //    long estimatedTimeRemoveJava = System.nanoTime() - startTimeRemoveJava;
 //    System.out.println(estimatedTimeRemoveJava + " JavaList remove time");
 //
-//    for (int i = 0; i < 100000; ++i) {
-//        listMy.add((int)(-100+Math.random()*(10+100)));
-//    }
 //    long startTimeRemoveMy = System.nanoTime();
 //    listMy.remove(50000);
 //    long estimatedTimeRemoveMy = System.nanoTime() - startTimeRemoveMy;
@@ -92,78 +74,57 @@ public class MainTestPerformance {
 
 //----------------perfomance test with MyTriangle--------------------
 
-    ILinkedList<MyTriangle> listMy = new MyLinkedList<>();
     List<MyTriangle> listJava = new LinkedList<>();
+    for (int i = 0; i < 100000; ++i) {
+        int newNum = (int)(-10+Math.random()*(10+10));
+        MyTriangle nTg = new MyTriangle(newNum,newNum,newNum,newNum,newNum,newNum);
+        listJava.add(nTg);
+    }
+    ILinkedList<MyTriangle> listMy = new MyLinkedList<>();
+    for (int i = 0; i < 100000; ++i) {
+        int newNum = (int)(-10+Math.random()*(10+10));
+        MyTriangle nTg = new MyTriangle(newNum,newNum,newNum,newNum,newNum,newNum);
+        listMy.add(nTg);
+    }
+
+    int index = (int)(Math.random()*(1000+1));
+    int newNum1 = (int)(-10+Math.random()*(10+10));
+    MyTriangle nTg1 = new MyTriangle(newNum1,newNum1,newNum1,newNum1,newNum1,newNum1);
 
 //-------------Appends element to the end of list--------------------
 
 //    long startTimeAddJava = System.nanoTime();
-//    for (int i = 0; i < 100000; ++i) {
-//        int newNum = (int)(-10+Math.random()*(10+10));
-//        MyTriangle nTg = new MyTriangle(newNum,newNum,newNum,newNum,newNum,newNum);
-//        listJava.add(nTg);
-//    }
+//    listJava.add(nTg1);
 //    long estimatedTimeAddJava = System.nanoTime() - startTimeAddJava;
 //    System.out.println(estimatedTimeAddJava + " JavaList add time");
 //
 //    long startTimeAddMy = System.nanoTime();
-//    for (int i = 0; i < 100000; ++i) {
-//        int newNum = (int)(-10+Math.random()*(10+10));
-//        MyTriangle nTg = new MyTriangle(newNum,newNum,newNum,newNum,newNum,newNum);
-//        listMy.add(nTg);
-//    }
+//    listMy.add(nTg1);
 //    long estimatedTimeAddMy = System.nanoTime() - startTimeAddMy;
 //    System.out.println(estimatedTimeAddMy + " MyList add time");
 
 //-------------------------------------------------------------------
 //----------------------Inserts element in the list------------------
 
-//    for (int i = 0; i < 50000; ++i) {
-//        int newNum = (int)(-10+Math.random()*(10+10));
-//        MyTriangle nTg = new MyTriangle(newNum,newNum,newNum,newNum,newNum,newNum);
-//        listJava.add(nTg);
-//    }
-//    long startTimeAddJava = System.nanoTime();
-//        for (int i = 0; i < 50000; ++i) {
-//            int newNum = (int)(-10+Math.random()*(10+10));
-//            MyTriangle nTg = new MyTriangle(newNum,newNum,newNum,newNum,newNum,newNum);
-//            listJava.add((int)(Math.random()*(i+1)),nTg);
-//        }
-//    long estimatedTimeAddJava = System.nanoTime() - startTimeAddJava;
-//    System.out.println(estimatedTimeAddJava + " JavaList insert time");
-//
-//    for (int i = 0; i < 50000; ++i) {
-//        int newNum = (int)(-10+Math.random()*(10+10));
-//        MyTriangle nTg = new MyTriangle(newNum,newNum,newNum,newNum,newNum,newNum);
-//        listMy.add(nTg);
-//    }
-//    long startTimeAddMy = System.nanoTime();
-//        for (int i = 0; i < 50000; ++i) {
-//            int newNum = (int)(-10+Math.random()*(10+10));
-//            MyTriangle nTg = new MyTriangle(newNum,newNum,newNum,newNum,newNum,newNum);
-//            listMy.add((int)(Math.random()*(i+1)),nTg);
-//        }
-//    long estimatedTimeAddMy = System.nanoTime() - startTimeAddMy;
-//    System.out.println(estimatedTimeAddMy + " MyList insert time");
+    long startTimeAddJava = System.nanoTime();
+    listJava.add(index,nTg1);
+    long estimatedTimeAddJava = System.nanoTime() - startTimeAddJava;
+    System.out.println(estimatedTimeAddJava + " JavaList insert time");
+
+
+    long startTimeAddMy = System.nanoTime();
+    listMy.add(index,nTg1);
+    long estimatedTimeAddMy = System.nanoTime() - startTimeAddMy;
+    System.out.println(estimatedTimeAddMy + " MyList insert time");
 
 //-------------------------------------------------------------------
 //---------------------Search element in the list--------------------
 
-//    for (int i = 0; i < 100000; ++i) {
-//        int newNum = (int)(-10+Math.random()*(10+10));
-//        MyTriangle nTg = new MyTriangle(newNum,newNum,newNum,newNum,newNum,newNum);
-//        listJava.add(nTg);
-//    }
 //    long startTimeSearchJava = System.nanoTime();
 //    listJava.get(50000);
 //    long estimatedTimeSearchJava = System.nanoTime() - startTimeSearchJava;
 //    System.out.println(estimatedTimeSearchJava + " JavaList search time");
 //
-//    for (int i = 0; i < 100000; ++i) {
-//        int newNum = (int)(-10+Math.random()*(10+10));
-//        MyTriangle nTg = new MyTriangle(newNum,newNum,newNum,newNum,newNum,newNum);
-//        listMy.add(nTg);
-//    }
 //    long startTimeSearchMy = System.nanoTime();
 //    listMy.get(50000);
 //    long estimatedTimeSearchMy = System.nanoTime() - startTimeSearchMy;
@@ -172,25 +133,15 @@ public class MainTestPerformance {
 //-------------------------------------------------------------------
 //---------------------Remove element from list----------------------
 
-    for (int i = 0; i < 100000; ++i) {
-        int newNum = (int)(-10+Math.random()*(10+10));
-        MyTriangle nTg = new MyTriangle(newNum,newNum,newNum,newNum,newNum,newNum);
-        listJava.add(nTg);
-    }
-    long startTimeRemoveJava = System.nanoTime();
-    listJava.remove(50000);
-    long estimatedTimeRemoveJava = System.nanoTime() - startTimeRemoveJava;
-    System.out.println(estimatedTimeRemoveJava + " JavaList remove time");
-
-    for (int i = 0; i < 100000; ++i) {
-        int newNum = (int)(-10+Math.random()*(10+10));
-        MyTriangle nTg = new MyTriangle(newNum,newNum,newNum,newNum,newNum,newNum);
-        listMy.add(nTg);
-    }
-    long startTimeRemoveMy = System.nanoTime();
-    listMy.remove(50000);
-    long estimatedTimeRemoveMy = System.nanoTime() - startTimeRemoveMy;
-    System.out.println(estimatedTimeRemoveMy + " MyList remove time");
+//    long startTimeRemoveJava = System.nanoTime();
+//    listJava.remove(50000);
+//    long estimatedTimeRemoveJava = System.nanoTime() - startTimeRemoveJava;
+//    System.out.println(estimatedTimeRemoveJava + " JavaList remove time");
+//
+//    long startTimeRemoveMy = System.nanoTime();
+//    listMy.remove(50000);
+//    long estimatedTimeRemoveMy = System.nanoTime() - startTimeRemoveMy;
+//    System.out.println(estimatedTimeRemoveMy + " MyList remove time");
 
     }
 }

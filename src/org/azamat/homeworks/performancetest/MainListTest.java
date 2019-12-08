@@ -25,22 +25,22 @@ public class MainListTest {
         System.out.println(estimatedTimeLinkedList + " LinkedList add time");
 
         long startTimeInsertArrayList = System.nanoTime();
-        arrayList.add(50000,1);
+        arrayList.add(14,1);
         long estimatedTimeInsertArrayList = System.nanoTime() - startTimeInsertArrayList;
         System.out.println(estimatedTimeInsertArrayList + " ArrayList insert time");
 
         long startTimeInsertLinkedList = System.nanoTime();
-        linkedList.add(50000,1);
+        linkedList.add(14,1);
         long estimatedTimeInsertLinkedList = System.nanoTime() - startTimeInsertLinkedList;
         System.out.println(estimatedTimeInsertLinkedList + " LinkedList insert time");
 
         long startTimeRemoveArrayList = System.nanoTime();
-        arrayList.remove(50000);
+        arrayList.remove(1);
         long estimatedTimeRemoveArrayList = System.nanoTime() - startTimeRemoveArrayList;
         System.out.println(estimatedTimeRemoveArrayList + " ArrayList remove time");
 
         long startTimeRemoveLinkedList = System.nanoTime();
-        linkedList.remove(50000);
+        linkedList.remove(1);
         long estimatedTimeRemoveLinkedList = System.nanoTime() - startTimeRemoveLinkedList;
         System.out.println(estimatedTimeRemoveLinkedList + " LinkedList remove time");
     }
