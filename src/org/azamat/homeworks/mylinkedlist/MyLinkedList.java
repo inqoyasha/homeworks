@@ -25,39 +25,92 @@ public class MyLinkedList<E> implements ILinkedList<E>{
 
     @Override
     public void add(int index, E element) {
-        Node<E> next = getNodeByIndex(index);
-        //Node<E> newNode = new Node<E>(element);
-        //head.nextNode = newNode;
+        Node<E> newNode = new Node<E>(element, null);
+        if (index == size) {
+            Node<E> oldTail = tail;
+            tail = newNode;
+            oldTail.nextNode = tail;
+        } else if (index == 0) {
+                Node<E> oldHead = head;
+                head = newNode;
+                newNode.nextNode = oldHead;
+            } else {
+                Node<E> curr = getNodeByIndex(index);
+                Node<E> prev = getNodeByIndex(index - 1);
+                prev.nextNode = newNode;
+                newNode.nextNode = curr;
+            }
+
         size++;
     }
 
     @Override
     public void clear() {
-
+        head = null;
+        tail = null;
+        size = 0;
     }
 
     @Override
     public E get(int index) {
-        if (index < 0)
-            System.out.println("index must be > 0");
-        Node<E> a = getNodeByIndex(index);
-        return a.element;
+        Node<E> node = getNodeByIndex(index);
+        return node.element;
     }
 
     @Override
     public int indexOf(E element) {
-        return 0;
+        if (element == null) {
+            for (int i = 0; i <= size; ++i) {
+                if (getNodeByIndex(i).element == null)
+                    return i;
+            }
+        } else {
+                for (int i = 0; i <= size; ++i) {
+                    if (element.equals(getNodeByIndex(i).element))
+                        return i;
+                }
+            }
+        return -1;
     }
 
     @Override
     public E remove(int index) {
-        Node<E> a = getNodeByIndex(index);
-        return null;
+        Node<E> prev = getNodeByIndex(index-1);
+        Node<E> oldCurr = getNodeByIndex(index);
+        Node<E> curr = oldCurr;
+        Node<E> next = getNodeByIndex(index+1);
+
+        if (curr.nextNode == null) {
+            prev.nextNode = null;
+        } else if (curr.equals(head)) {
+            head = next;
+        } else {
+            prev.nextNode = next;
+        }
+
+        oldCurr = null;
+        size--;
+        return curr.element;
     }
 
     @Override
     public E set(int index, E element) {
-        return null;
+        Node<E> prev = getNodeByIndex(index-1);
+        Node<E> oldCurr = getNodeByIndex(index);
+        Node<E> curr = oldCurr;
+        Node<E> newNode = new Node(element, curr.nextNode);
+
+        if (curr.nextNode == null) {
+            newNode.nextNode = null;
+            prev.nextNode = newNode;
+        } else if (curr.equals(head)) {
+            head = newNode;
+        } else {
+            prev.nextNode = newNode;
+        }
+
+        oldCurr = null;
+        return curr.element;
     }
 
     @Override
@@ -66,13 +119,26 @@ public class MyLinkedList<E> implements ILinkedList<E>{
     }
 
     @Override
-    public <E> E[] toArray(E[] arrE) {
-        return null;
+    public <T> T[] toArray(T[] arrE) {
+        Class arrClass = arrE.getClass().getComponentType();
+        arrE = (T[])java.lang.reflect.Array.newInstance(arrClass, size);
+
+        int i = 0;
+        Object[] res= arrE;
+        for (Node<E> j = head; j != null; j = j.nextNode)
+            res[i++] = j.element;
+
+        return arrE;
     }
 
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        Object[] res = new Object[size];
+        int i = 0;
+        for (Node<E> j = head; j != null; j = j.nextNode)
+            res[i++] = j.element;
+
+        return res;
     }
 
     @Override
@@ -94,11 +160,15 @@ public class MyLinkedList<E> implements ILinkedList<E>{
 
     @Override
     public String toString() {
-        return "MyLinkedList{" +
-                "head=" + head +
-                ", tail=" + tail +
-                ", size=" + size +
-                '}';
+        if (head == null) {
+            return "";
+        }
+        String result = "";
+
+        for (int i = 0; i <= size; ++i ) {
+            result += getNodeByIndex(i) + ", ";
+        }
+        return result;
     }
 
     private Node<E> getNodeByIndex(int index){
