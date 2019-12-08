@@ -1,113 +1,78 @@
 package org.azamat.homeworks.mylinkedlist;
 
-import org.azamat.homeworks.oop.triangle.MyTriangle;
-
-import java.util.LinkedList;
-import java.util.List;
-
 public class MainClass {
     public static void main(String[] args) {
-//        ILinkedList<Integer> listMy = new MyLinkedList<>();
-//        List<Integer> listJava = new LinkedList<>();
-//
-//        long startTimeAddJava = System.nanoTime();
-//        for (int i = 0; i < 100000; ++i) {
-//            listJava.add((int)(-100+Math.random()*(10+100)));
-//        }
-//        long estimatedTimeAddJava = System.nanoTime() - startTimeAddJava;
-////       System.out.println(estimatedTimeAddJava);
-//
-//        long startTimeAddMy = System.nanoTime();
-//        for (int i = 0; i < 100000; ++i) {
-//            listMy.add((int)(-100+Math.random()*(10+100)));
-//        }
-//        long estimatedTimeAddMy = System.nanoTime() - startTimeAddMy;
-////        System.out.println(estimatedTimeAddMy);
-//
-//        long startTimeSearchJava = System.nanoTime();
-//        listJava.get(50009);
-//        long estimatedTimeSearchJava = System.nanoTime() - startTimeSearchJava;
-////        System.out.println(estimatedTimeSearchJava);
-//
-//        long startTimeSearchMy = System.nanoTime();
-//        listMy.get(50009);
-//        long estimatedTimeSearchMy = System.nanoTime() - startTimeSearchMy;
-////        System.out.println(estimatedTimeSearchMy);
-//
-//        long startTimeRemoveJava = System.nanoTime();
-//        listJava.remove(50009);
-//        long estimatedTimeRemoveJava = System.nanoTime() - startTimeRemoveJava;
-//        System.out.println(estimatedTimeRemoveJava);
-//
-//        long startTimeRemoveMy = System.nanoTime();
-//        listMy.remove(50009);
-//        long estimatedTimeRemoveMy = System.nanoTime() - startTimeRemoveMy;
-//        System.out.println(estimatedTimeRemoveMy);
-        ILinkedList<Integer> list = new MyLinkedList<>();
-        list.add(1);
-        list.add(2);
-        list.add(3);
-        list.add(2);
-//        list.add(null);
+        ILinkedList<Integer> myList = new MyLinkedList<>();
+        myList.add(1);
+        myList.add(2);
+        myList.add(3);
+        myList.add(2);
+        myList.add(null);
+//-------------------------------------------------------------
 //        System.out.println("----------------");
-//        list.add(0,0);
-//        list.forEach(System.out::println);
-//        System.out.println("size: "+list.size());
+//        myList.add(0,0);
+//        myList.forEach(System.out::println);
+//        System.out.println("size: "+myList.size());
 //        System.out.println("----------------");
-//        list.add(5,9);
-//        list.forEach(System.out::println);
+//        myList.add(5,9);
+//        myList.forEach(System.out::println);
 //        System.out.println("----------------");
-//        System.out.println("size: "+list.size());
-//        list.add(7,null);
-//        System.out.println("size: "+list.size());
-//        list.forEach(System.out::println);
+//        System.out.println("size: "+myList.size());
+//        myList.add(7,null);
+//        System.out.println("size: "+myList.size());
+//        myList.forEach(System.out::println);
 //        System.out.println("------last------");
-//        list.remove(6);
-//        System.out.println("size: "+list.size());
-//        list.forEach(System.out::println);
+//        myList.remove(6);
+//        System.out.println("size: "+myList.size());
+//        myList.forEach(System.out::println);
 //        System.out.println("------first-----");
-//        list.remove(0);
-//        System.out.println("size: "+list.size());
-//        list.forEach(System.out::println);
+//        myList.remove(0);
+//        System.out.println("size: "+myList.size());
+//        myList.forEach(System.out::println);
 //        System.out.println("-----mid-------");
-//        list.remove(3);
-//        System.out.println("size: "+list.size());
-//        list.forEach(System.out::println);
+//        myList.remove(3);
+//        System.out.println("size: "+myList.size());
+//        myList.forEach(System.out::println);
 //
 //        System.out.println("-----set-last--");
-//        list.set(4,0);
-//        System.out.println("size: "+list.size());
-//        list.forEach(System.out::println);
+//        myList.set(4,0);
+//        System.out.println("size: "+myList.size());
+//        myList.forEach(System.out::println);
 //
 //        System.out.println("-----set--2----");
-//        list.set(2,0);
-//        System.out.println("size: "+list.size());
-//        list.forEach(System.out::println);
+//        myList.set(2,0);
+//        System.out.println("size: "+myList.size());
+//        myList.forEach(System.out::println);
+//
+//
+//        System.out.println("-----get--3----");
+//        System.out.println(myList.get(3));
+//
+//
+//        System.out.println("-----indexOf--0----");
+//        System.out.println(myList.indexOf(0));
 //        System.out.println("---------------");
-
-//        for (Integer t: list) {
-//            System.out.println(t);
-//        }
-//
-//        Integer[] a = list.toArray(new Integer[0]);
-//
-//        for (Integer t: a) {
-//            System.out.println(t);
-//        }
-
-//        for (Integer t: list) {
-//            System.out.println(t);
-//        }
-//
-//        Object[] a = list.toArray();
-//
-//        for (int i = 0; i < a.length; i++) {
-//            System.out.println(a[i]);
-//        }
-
-
-//        System.out.println(list.indexOf(null));
-
+//-------------------------------------------------------------
+        System.out.println("----myList-----");
+        for (Integer t: myList) {
+            System.out.println(t);
+        }
+        System.out.println("----T[] a-----");
+        Integer[] a = myList.toArray(new Integer[0]);
+        System.out.println("---------a-----");
+        for (Integer t: a) {
+            System.out.println(t);
+        }
+        System.out.println("---------------");
+        System.out.println("-Object b[i]------");
+        Object[] b = myList.toArray();
+        for (int i = 0; i < b.length; i++) {
+            System.out.println(b[i]);
+        }
+        System.out.println("---------------");
+        System.out.println(myList.indexOf(null));
+        System.out.println("---------------");
+//-------------------------------------------------------------
 //        MyTriangle trg1 = new MyTriangle(1,1,1,1,1,1);
 //        MyTriangle trg2 = new MyTriangle(2,2,2,2,2,2);
 //        MyTriangle trg3 = new MyTriangle(3,3,3,3,3,3);
