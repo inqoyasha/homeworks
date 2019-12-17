@@ -31,15 +31,15 @@ public class MyLinkedList<E> implements ILinkedList<E>{
             tail = newNode;
             oldTail.nextNode = tail;
         } else if (index == 0) {
-                Node<E> oldHead = head;
-                head = newNode;
-                newNode.nextNode = oldHead;
-            } else {
-                Node<E> curr = getNodeByIndex(index);
-                Node<E> prev = getNodeByIndex(index - 1);
-                prev.nextNode = newNode;
-                newNode.nextNode = curr;
-            }
+            Node<E> oldHead = head;
+            head = newNode;
+            newNode.nextNode = oldHead;
+        } else {
+            Node<E> curr = getNodeByIndex(index);
+            Node<E> prev = getNodeByIndex(index - 1);
+            prev.nextNode = newNode;
+            newNode.nextNode = curr;
+        }
 
         size++;
     }
@@ -72,11 +72,11 @@ public class MyLinkedList<E> implements ILinkedList<E>{
                     return i;
             }
         } else {
-                for (int i = 0; i <= size; ++i) {
-                    if (element.equals(getNodeByIndex(i).element))
-                        return i;
-                }
+            for (int i = 0; i <= size; ++i) {
+                if (element.equals(getNodeByIndex(i).element))
+                    return i;
             }
+        }
         return -1;
     }
 
@@ -105,7 +105,6 @@ public class MyLinkedList<E> implements ILinkedList<E>{
         Node<E> prev = getNodeByIndex(index-1);
         Node<E> oldCurr = getNodeByIndex(index);
         Node<E> curr = oldCurr;
-        Node<E> next = getNodeByIndex(index+1);
         Node<E> newNode = new Node(element, curr.nextNode);
 
         if (curr.nextNode == null) {
@@ -127,15 +126,26 @@ public class MyLinkedList<E> implements ILinkedList<E>{
     }
 
     @Override
-    public <E> E[] toArray(E[] arrE) {
-        arrE = (E[])java.lang.reflect.Array.newInstance(
-                arrE.getClass().getComponentType(), size);
+    public <T> T[] toArray(T[] arrE) {
+        Class arrClass = arrE.getClass().getComponentType();
+        arrE = (T[])java.lang.reflect.Array.newInstance(arrClass, size);
+
+        int i = 0;
+        Object[] res= arrE;
+        for (Node<E> j = head; j != null; j = j.nextNode)
+            res[i++] = j.element;
+
         return arrE;
     }
 
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        Object[] res = new Object[size];
+        int i = 0;
+        for (Node<E> j = head; j != null; j = j.nextNode)
+            res[i++] = j.element;
+
+        return res;
     }
 
     @Override
@@ -169,19 +179,11 @@ public class MyLinkedList<E> implements ILinkedList<E>{
     }
 
     private Node<E> getNodeByIndex(int index){
-            Node<E> a = head;
-            for (int i = 0; i < index; ++i) {
-                a = a.nextNode;
-            }
-            return a;
-    }
-
-    private void linkLast(E element) {
-        Node<E> l = tail;
-
-    }
-
-    private void linkBefore(E element, Node<E> pred) {
+        Node<E> a = head;
+        for (int i = 0; i < index; ++i) {
+            a = a.nextNode;
+        }
+        return a;
     }
 
     private static class Node<E> {
