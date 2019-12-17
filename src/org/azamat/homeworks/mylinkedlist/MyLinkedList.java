@@ -46,6 +46,13 @@ public class MyLinkedList<E> implements ILinkedList<E>{
 
     @Override
     public void clear() {
+        Node<E> node = head;
+        while (node != null) {
+            Node<E> next = node.nextNode;
+            node.element = null;
+            node.nextNode = null;
+            node = next;
+        }
         head = null;
         tail = null;
         size = 0;
@@ -98,6 +105,7 @@ public class MyLinkedList<E> implements ILinkedList<E>{
         Node<E> prev = getNodeByIndex(index-1);
         Node<E> oldCurr = getNodeByIndex(index);
         Node<E> curr = oldCurr;
+        Node<E> next = getNodeByIndex(index+1);
         Node<E> newNode = new Node(element, curr.nextNode);
 
         if (curr.nextNode == null) {
@@ -119,26 +127,15 @@ public class MyLinkedList<E> implements ILinkedList<E>{
     }
 
     @Override
-    public <T> T[] toArray(T[] arrE) {
-        Class arrClass = arrE.getClass().getComponentType();
-        arrE = (T[])java.lang.reflect.Array.newInstance(arrClass, size);
-
-        int i = 0;
-        Object[] res= arrE;
-        for (Node<E> j = head; j != null; j = j.nextNode)
-            res[i++] = j.element;
-
+    public <E> E[] toArray(E[] arrE) {
+        arrE = (E[])java.lang.reflect.Array.newInstance(
+                arrE.getClass().getComponentType(), size);
         return arrE;
     }
 
     @Override
     public Object[] toArray() {
-        Object[] res = new Object[size];
-        int i = 0;
-        for (Node<E> j = head; j != null; j = j.nextNode)
-            res[i++] = j.element;
-
-        return res;
+        return new Object[0];
     }
 
     @Override
@@ -177,6 +174,14 @@ public class MyLinkedList<E> implements ILinkedList<E>{
                 a = a.nextNode;
             }
             return a;
+    }
+
+    private void linkLast(E element) {
+        Node<E> l = tail;
+
+    }
+
+    private void linkBefore(E element, Node<E> pred) {
     }
 
     private static class Node<E> {
